@@ -1,0 +1,120 @@
+:host {
+  user-select: none;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: 0.5s;
+}
+
+.rightArrow {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(50%, -50%);
+  right: 32px;
+  font-size: 25px;
+  color: hsl(0deg 0% 0% / 20%);
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.leftArrow {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  left: 32px;
+  font-size: 25px;
+  color: hsl(0deg 0% 0% / 20%);
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  background: transparent;
+  border-radius: 50%;
+  transform: translate(0%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  z-index: 1;
+  cursor: pointer;
+}
+.icon.right {
+  right: 5px;
+}
+
+.icon.left {
+  left: 5px;
+}
+
+.right-arrow {
+  border-style: solid;
+  border-color: #656565b5;
+  border-width: 0 3px 3px 0;
+  margin-left: -5px;
+  padding: 5px;
+  transform: rotate(-45deg);
+}
+.left-arrow {
+  border-style: solid;
+  border-color: #656565b5;
+  border-width: 0 3px 3px 0;
+  margin-right: -5px;
+  padding: 5px;
+  transform: rotate(135deg);
+}
+
+:host:hover .left-arrow,
+:host:hover .right-arrow {
+  border-color: white;
+}
+:host:hover .icon {
+  background-color: hsl(0deg 0% 0% / 40%);
+}
+
+.slider {
+  position: relative;
+  height: 100%;
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin: 0 3px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.mobile_icon_left {
+  left: 0 !important;
+  height: 30px;
+  width: 30px;
+}
+
+.mobile_icon_right {
+  right: 0 !important;
+  height: 30px;
+  width: 30px;
+}
+
+.mobile_arrow {
+  border-color: #ccb31a;
+}

@@ -1,0 +1,47 @@
+<div class="notificationMsg themed" *ngIf="showNotification">Thanks for you'r order! :)</div>
+<span class="address d-inline-block"
+  ><b class="contact d-block themed">CONTACT INFORMATION</b>
+  <br />
+  <input type="text" placeholder="EMAIL" class="email" />
+  <br />
+  <label class="checkbox-container">
+    <input type="checkbox" class="checkbox-input" />
+    <span class="checkbox-custom"></span>
+    <span class="emailNotif">EMAIL ME WITH NEWS AND OFFERS</span>
+  </label>
+  <br />
+  <b class="ship d-block">SHIPPING ADDRESS</b>
+  <br />
+  <select name="user_profile_color_1" class="country">
+    <option value="Ukraine">Ukraine</option>
+    <option value="USA">USA</option>
+    <option value="Germany">Germany</option>
+    <option value="Spain">Spain</option>
+    <option value="Italy">Italy</option>
+    <option value="Poland">Poland</option>
+  </select>
+  <br />
+  <input type="text" placeholder="FIRST NAME" class="input" />
+  <br />
+  <input type="text" placeholder="LAST NAME" class="input" />
+  <br />
+  <input type="text" placeholder="STREET AND HOUSE NUMBER" class="input" />
+  <br />
+  <input type="text" placeholder="ADDITIONAL ADDRESS (OPTIONAL)" class="input" />
+  <br />
+  <input type="text" placeholder="POSTAL CODE" class="input" />
+  <br />
+  <input type="text" placeholder="CITY" class="input" />
+  <br />
+  <input type="text" placeholder="PHONE" class="input" />
+  <br />
+  <label class="checkbox-container">
+    <input type="checkbox" class="checkbox-input" />
+    <span class="checkbox-custom"></span>
+    <span class="emailNotif"> SAVE THIS INFORMATION FOR THE NEXT TIME</span>
+  </label>
+  <br />
+  <button (click)="showNotificationFunc()" class="continue text-center">BUY</button>
+  <br />
+  <button class="back text-center" (click)="goToCheckout()">RETURN TO MAIN PAGE</button>
+</span>

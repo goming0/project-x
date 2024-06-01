@@ -1,0 +1,31 @@
+<span class="d-inline-block spanWrap" *ngIf="dataLoaded">
+  <div class="item" *ngFor="let prod of filteredProds; let i = index">
+    <img *ngIf="prod.title" class="itemImg" [src]="prod.imagesUrls[0]" />
+    <span class="itemName" *ngIf="prod.title">{{ prod.title }}</span
+    ><br />
+    <span class="itemPrice" *ngIf="prod.title">{{ prod.price | currencyRlt : (currentCurrency | async) }}</span
+    ><br />
+    <span class="itemSize" *ngIf="prod.title">{{ prod.size }}</span
+    ><br />
+    <div class="btns">
+      <button (click)="decreaseAmount(prod)" class="amtBtn">-</button>
+      <button class="amtBtn">{{ prod.amount }}</button>
+      <button (click)="increaseAmount(prod)" class="amtBtn">+</button>
+    </div>
+    <span class="deleteProd" (click)="deleteProduct(i, prod)">Remove</span>
+  </div>
+  <div class="prices">
+    <div class="subtotal">
+      <span class="senc">SUBTOTAL</span>
+      <span class="subtotalSpan">{{ subtotalPrice | currencyRlt : (currentCurrency | async) }}</span>
+    </div>
+    <div class="shipping">
+      <span class="senc">SHIPPING</span>
+      <span class="subtotalSpan">{{ shippingPrice | currencyRlt : (currentCurrency | async) }}</span>
+    </div>
+    <div class="total">
+      <span class="senc">TOTAL</span>
+      <span class="subtotalSpan">{{ totalPrice | currencyRlt : (currentCurrency | async) }}</span>
+    </div>
+  </div>
+</span>

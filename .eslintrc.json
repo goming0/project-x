@@ -1,0 +1,107 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*", "src/setup.jest.ts"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": [
+          "tsconfig.*?.json"
+          // "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "plugins": ["prettier"],
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        // Стайл гайд AirBnB
+        "airbnb-typescript/base",
+        // Настройки для Prettier
+        "plugin:prettier/recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript"
+      ],
+      "rules": {
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off",
+        "class-methods-use-this": "off",
+        "lines-between-class-members": "off",
+        //fix this error -> [eslint] Delete `CR` [prettier/prettier]
+        "prettier/prettier": [
+          "error",
+          {
+            "endOfLine": "auto",
+            "arrowParens": "always"
+          }
+        ],
+        "arrow-body-style": [
+          "error",
+          "as-needed",
+          {
+            "requireReturnForObjectLiteral": true
+          }
+        ]
+        // "prefer-arrow-callback": "off"
+      }
+    },
+    {
+      "plugins": ["jest"],
+      "env": {
+        "jest/globals": true
+      },
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.*?.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:jest/recommended"
+      ],
+      "settings": {
+        "jest": {
+          "globalAliases": {
+            "describe": ["context"],
+            "fdescribe": ["fcontext"],
+            "xdescribe": ["xcontext"]
+          }
+        }
+      },
+      "rules": {
+        //Jest
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/valid-expect": "error",
+
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        // "max-len": ["error", { "code": 140 }]
+      }
+    }
+  ]
+}

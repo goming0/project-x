@@ -1,0 +1,15 @@
+<div class="d-flex flex-column h-100" role="button">
+  <div class="d-flex card_Wrapper" [style]="'--sliderImageHeight: ' + cardMaxHeight + 'px;'">
+    <app-image-slider
+      [isShowDot]="false"
+      [slides]="product!.imagesUrls"
+      [style]="'flex: 1 1 ' + cardMaxHeight + 'px'"
+      (clickOnImage)="onClick()"></app-image-slider>
+  </div>
+  <div class="mt-2 d-flex flex-column flex-grow-1 justify-content-between" (click)="onClick()">
+    <div class="d-flex flex-grow-1 flex-column justify-content-between text-uppercase">
+      <h5 class="textOfCard__title fw-bolder">{{ product?.title }}</h5>
+      <h6 class="textOfCard__subtitle">{{ product?.price | currencyRlt : currency }}</h6>
+    </div>
+  </div>
+</div>

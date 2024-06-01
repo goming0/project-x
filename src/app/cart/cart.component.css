@@ -1,0 +1,33 @@
+@import '../../styles.css';
+
+.notification {
+  height: 86.5vh;
+  width: 100%;
+  font-size: 80px;
+  font-weight: 900;
+  background-color: var(--body-bgc);
+  color: var(--font-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart {
+  background-color: var(--body-bgc);
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 524px) {
+  .cart {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 360px) {
+  .notification {
+    font-size: 74px;
+    margin-left: 2vw;
+    padding-right: 2vw;
+  }
+}

@@ -1,0 +1,13 @@
+<form class="d-flex flex-shrink-1 col-12 col-sm-4 col-md-4 col-lg-2 m-1 m-sm-0" role="search">
+  <input
+    class="form-control"
+    type="search"
+    name="search"
+    autocomplete="off"
+    placeholder="Search Product"
+    aria-label="Search"
+    #inputSearch
+    [(ngModel)]="searchValue"
+    (input)="onSearch()"
+    (keyup.enter)="inputSearch.blur()" />
+</form>

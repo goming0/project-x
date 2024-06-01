@@ -1,0 +1,300 @@
+<div class="admin-container h-100">
+  <div class="admin-sidebar h-100">
+    <button class="buttonsAdmin" (click)="setActiveBlock('add')" [class.active]="activeBlock === 'add'">Add</button>
+    <button class="buttonsAdmin" (click)="setActiveBlock('delete')" [class.active]="activeBlock === 'delete'">
+      Delete
+    </button>
+    <!-- <button class="buttonsAdmin">Add</button>
+    <button class="buttonsAdmin">Delete</button> -->
+  </div>
+  <div class="admin-content">
+    <form
+      class="d-flex flex-column align-items-center active"
+      #formAdd="ngForm"
+      (ngSubmit)="onSubmit(formAdd)"
+      *ngIf="showForm && activeBlock === 'add'">
+      <div class="p-4">
+        <div class="mb-3 d-flex align-items-center">
+          <label for="categoryAdmForm">Category:</label>
+          <input
+            #category="ngModel"
+            [(ngModel)]="formData.category"
+            type="text"
+            placeholder="Jordan*"
+            class="form-control ms-2"
+            id="category"
+            name="categoryAdmForm"
+            minlength="2"
+            required />
+        </div>
+        <div style="color: #dc3545" *ngIf="category.invalid && (category.dirty || formAdd.dirty)">
+          Please enter category.
+        </div>
+        <div class="mb-3 d-flex align-items-center">
+          <label for="titleAdmForm">Product name:</label>
+          <input
+            [(ngModel)]="formData.title"
+            type="text"
+            #title="ngModel"
+            placeholder="AIR JORDAN 1 MID*"
+            class="form-control ms-2"
+            name="title"
+            id="titleAdmForm"
+            (keydown)="validateLettersAndSpaces($event)"
+            minlength="2"
+            required />
+        </div>
+        <div style="color: #dc3545" *ngIf="title.invalid && (title.dirty || formAdd.dirty)">
+          Please enter name of product.
+        </div>
+        <div class="mb-3 d-flex align-items-center">
+          <label for="descriptionAdmForm">Description:</label>
+          <input
+            [(ngModel)]="formData.description"
+            #description="ngModel"
+            type="text"
+            placeholder="The Air Jordan 1 Mid brings full-court style...*"
+            class="form-control ms-2"
+            name="description"
+            id="descriptionAdmForm"
+            minlength="2"
+            (keydown)="validateLettersSpacesAndNumbers($event)"
+            required />
+        </div>
+        <div style="color: #dc3545" *ngIf="description.invalid && (description.dirty || formAdd.dirty)">
+          Please enter description.
+        </div>
+        <div class="priceSitting">
+          <div class="mb-3 d-flex align-items-center">
+            <label for="currencyAdmForm">Currency:</label>
+            <select
+              [(ngModel)]="formData.currency"
+              id="currencyAdmForm"
+              class="form-control ms-3"
+              name="currency"
+              required>
+              <option value="USD" selected>USD</option>
+            </select>
+          </div>
+          <div class="mb-3 d-flex align-items-center">
+            <label for="priceAdmForm">Price:</label>
+            <input
+              [(ngModel)]="formData.price"
+              #price="ngModel"
+              type="text"
+              inputmode="numeric"
+              placeholder="7.42*"
+              class="form-control ms-3"
+              name="price"
+              pattern="\d+(\.\d{1,2})?"
+              (keydown)="validateNumbers($event)"
+              id="priceAdmForm"
+              required />
+          </div>
+        </div>
+        <div class="colorSetting">
+          <div class="mb-3 d-flex align-items-center">
+            <label for="colorNameAdmForm">Name Color:</label>
+            <input
+              [(ngModel)]="formData.color.name"
+              #colorName="ngModel"
+              type="text"
+              placeholder="White*"
+              class="form-control ms-3"
+              id="colorNameAdmForm"
+              name="colorName"
+              pattern=".{1,}"
+              required />
+          </div>
+          <div style="color: #dc3545" *ngIf="colorName.invalid && (colorName.dirty || formAdd.dirty)">
+            Please enter color name.
+          </div>
+          <div class="mb-3 d-flex align-items-center">
+            <label for="hexNameAdmForm">HEX:</label>
+            <input
+              [(ngModel)]="formData.color.hex"
+              #colorHex="ngModel"
+              type="text"
+              placeholder="#FFFFFF*"
+              class="form-control ms-3"
+              name="colorHex"
+              id="hexNameAdmForm"
+              pattern="#[0-9A-Fa-f]{6}"
+              required />
+          </div>
+          <div style="color: #dc3545" *ngIf="colorHex.invalid && (colorHex.dirty || formAdd.dirty)">
+            Please enter valid hex (example #ffffff).
+          </div>
+        </div>
+        <div class="mb-3 sizeBox">
+          <h5 class="mb-0">Sizes:</h5>
+          <div class="form-check">
+            <input
+              [(ngModel)]="size8"
+              #sizeRef8="ngModel"
+              class="form-check-input"
+              type="checkbox"
+              value="8"
+              name="size[]" />
+            <label class="form-check-label">8</label>
+          </div>
+          <div class="form-check">
+            <input
+              [(ngModel)]="size9"
+              #sizeRef9="ngModel"
+              class="form-check-input"
+              type="checkbox"
+              value="9"
+              name="sizes[]" />
+            <label class="form-check-label">9</label>
+          </div>
+          <div class="form-check">
+            <input
+              [(ngModel)]="size10"
+              #sizeRef10="ngModel"
+              class="form-check-input"
+              type="checkbox"
+              value="10"
+              name="sizes[]" />
+            <label class="form-check-label">10</label>
+          </div>
+          <div class="form-check">
+            <input
+              [(ngModel)]="size11"
+              #sizeRef11="ngModel"
+              class="form-check-input"
+              type="checkbox"
+              value="11"
+              name="sizes[]" />
+            <label class="form-check-label">11</label>
+          </div>
+          <div class="form-check">
+            <input
+              [(ngModel)]="size12"
+              #sizeRef12="ngModel"
+              class="form-check-input"
+              type="checkbox"
+              value="12"
+              name="sizes[]" />
+            <label class="form-check-label">12</label>
+          </div>
+          <div class="form-check">
+            <input
+              [(ngModel)]="size13"
+              #sizeRef13="ngModel"
+              class="form-check-input"
+              type="checkbox"
+              value="13"
+              name="sizes[]" />
+            <label class="form-check-label">13</label>
+          </div>
+          <div class="form-check">
+            <input
+              [(ngModel)]="size14"
+              #sizeRef14="ngModel"
+              class="form-check-input"
+              type="checkbox"
+              value="14"
+              name="sizes[]" />
+            <label class="form-check-label">14</label>
+          </div>
+          <div class="form-check">
+            <input
+              [(ngModel)]="size15"
+              #sizeRef15="ngModel"
+              class="form-check-input"
+              type="checkbox"
+              value="15"
+              name="sizes[]" />
+            <label class="form-check-label">15</label>
+          </div>
+        </div>
+        <div
+          style="color: #dc3545"
+          *ngIf="
+            sizeIsUntouched([sizeRef8, sizeRef9, sizeRef10, sizeRef11, sizeRef12, sizeRef13, sizeRef14, sizeRef15]) &&
+            formAdd.dirty
+          ">
+          Shoes must be at least one size.
+        </div>
+
+        <div class="ImgAndType__box mb-4 d-flex justify-content-between">
+          <!-- Левая колонка - выбор картинок -->
+          <div class="imgNewBox d-flex align-items-center">
+            <p class="mb-0 me-3">Add pictures:</p>
+            <div class="">
+              <label for="fileInput" class="btn-input">Select files</label>
+              <input
+                class="file-input"
+                id="fileInput"
+                #addFiles
+                type="file"
+                multiple
+                (change)="onFileInputChange($event)"
+                required />
+              <span class="ms-3" *ngIf="selectedFiles.length > 0">{{ selectedFiles.length }} file(s) selected</span>
+            </div>
+            <div style="color: #dc3545" *ngIf="selectedFiles.length === 0 && formAdd.dirty">
+              Must be at least one image.
+            </div>
+          </div>
+
+          <!-- Правая колонка - выбор модели -->
+          <div class="typeModel d-flex align-items-center">
+            <label for="typeModeleAdmForm">Model:</label>
+            <select
+              [(ngModel)]="formData.typeModel"
+              id="typeModeleAdmForm"
+              class="form-control ms-3"
+              name="typeModel"
+              required>
+              <option value="Sports" selected>Sports</option>
+              <option value="EveryDay">EveryDay</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="text-danger" *ngIf="showErrorMessage">
+          You did not fill in all the fields, or did not select sizes, or did not upload a picture
+        </p>
+      </div>
+
+      <div class="actions">
+        <button
+          type="submit"
+          class="btn btn-primary btnAdd"
+          [disabled]="!formAdd.valid || !isAnySizeSelected() || !isFilesSelected()">
+          Add
+        </button>
+      </div>
+    </form>
+
+    <section class="d-flex w-100 deleteMainBox p-3 flex-column" *ngIf="!showForm && activeBlock === 'delete'">
+      <!-- <section class="d-flex w-100 deleteMainBox p-3 flex-column"> -->
+      <div class="searcBox w-100 d-flex flex-column align-items-center text-center">
+        <h5 class="mb-4">What product do you want to delete?</h5>
+        <app-search class="seaerchProd w-100 mb-4" (searchChange)="submitSearch($event)"></app-search>
+
+        <div class="categoryFilter mb-4">
+          <button class="button__category" (click)="setSelectedCategory('All')">All</button>
+          <button class="button__category" (click)="setSelectedCategory('Sports')">Sports</button>
+          <button class="button__category" (click)="setSelectedCategory('EveryDay')">EveryDay</button>
+        </div>
+      </div>
+      <div class="boxProduct d-flex flex-wrap w-100">
+        <div class="d-flex justify-content-center flex-wrap gap-4">
+          <ng-container *ngIf="filteredProducts$ | async as filteredProducts">
+            <div class="productItem" *ngFor="let productRef of filteredProducts">
+              <div class="productItem ms-3 mb-4 p-1">
+                <img class="mb-3" width="200" [src]="productRef.imagesUrls[0]" alt="img" />
+                <h4 class="">{{ productRef.title }}</h4>
+                <p class="mb-3"><b>Description:</b> {{ productRef.description | ellipse : 80 }}</p>
+                <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

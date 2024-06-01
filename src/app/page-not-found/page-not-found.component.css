@@ -1,0 +1,18 @@
+.wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+@media (max-width: 310px) {
+  :host {
+    min-height: calc(100vh - 66.8px - 50px);
+  }
+}
+@media (min-width: 311px) {
+  :host {
+    min-height: calc(100vh - 66.8px - 50px);
+  }
+}

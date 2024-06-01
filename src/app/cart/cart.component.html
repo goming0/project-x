@@ -1,0 +1,4 @@
+<div *ngIf="ifContains" class="cart">
+  <app-shipping-address></app-shipping-address> <app-cart-items></app-cart-items>
+</div>
+<div *ngIf="!ifContains" class="notification themed">YOU'R CART IS EMPTY :(</div>

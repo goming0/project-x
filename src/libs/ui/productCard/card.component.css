@@ -1,0 +1,39 @@
+:host {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern';
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-family: HelveticaNeue, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.0625rem;
+}
+
+.border-radius-10 {
+  border-radius: 10px;
+}
+
+.textOfCard__title,
+.textOfCard__subtitle {
+  font-size: 14px;
+}
+
+@media (max-width: 400px) {
+  :host {
+    padding: 0;
+  }
+
+  .card_Wrapper {
+    --sliderImageHeight: 350px !important;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 900px) {
+  .card_Wrapper {
+    --sliderImageHeight: 200px !important;
+  }
+}
+
+.card_Wrapper {
+  min-height: var(--sliderImageHeight);
+}

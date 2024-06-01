@@ -1,0 +1,65 @@
+@import '../../styles.css';
+
+@media (max-width: 400px) {
+  .dopMargin {
+    margin: 0px;
+  }
+  .card_container {
+    padding: 0 10px !important;
+  }
+}
+
+.mainPage {
+  background-color: var(--body-bgc);
+}
+
+.appCard {
+  color: var(--font-color);
+}
+
+.form-sticky {
+  margin-top: 20px;
+  position: sticky;
+  top: 66px;
+  z-index: 2;
+}
+
+@media (max-width: 310px) {
+  :host {
+    min-height: calc(100vh - 66.8px - 50px);
+  }
+}
+@media (min-width: 311px) {
+  :host {
+    min-height: calc(100vh - 66.8px - 50px);
+  }
+}
+
+.row-cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.col-lg-4,
+.col-md-12 {
+  flex: 1 1 300px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-title,
+.mb-3 {
+  margin-top: auto;
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}

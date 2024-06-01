@@ -1,0 +1,22 @@
+<section class="mainPage themed">
+  <div class="formSearch form-sticky w-100">
+    <app-search class="d-flex w-100 justify-content-center form" (searchChange)="submit($event)"></app-search>
+  </div>
+  <div class="py-4 px-3 px-lg-4 card_container">
+    <div
+      class="row justify-content-center gap-4 dopMargin"
+      *ngIf="filteredProducts$ | async as filteredProducts; else loading">
+      <app-card
+        class="appCard"
+        style="flex: 0 1 350px"
+        *ngFor="let productRef of filteredProducts"
+        [product]="productRef"
+        [currency]="currentCurrency | async"
+        (clickToProduct)="redirectToProductPage(productRef)"></app-card>
+    </div>
+  </div>
+</section>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

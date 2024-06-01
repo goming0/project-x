@@ -1,0 +1,127 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+  rel="stylesheet" />
+
+<nav class="navbar navbar-expand-lg sticky-top navMaxHeigth themed">
+  <div class="container-fluid px-lg-3 px-1 flex-wrap">
+    <a class="navbar-brand" routerLink="">
+      <img
+        src="/assets/favicon/macOS/icons8-waterfox-gradient-64.svg"
+        alt="shop"
+        title="WebShop"
+        width="56"
+        height="56" />
+    </a>
+    <div class="currencyChooser p-0">
+      <select
+        class="form-select w-auto currencySelector"
+        aria-label="Currency"
+        #currencyChange="ngModel"
+        [(ngModel)]="currentCurrency"
+        (change)="changeCurrency()">
+        <option selected value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="UAH">UAH</option>
+      </select>
+    </div>
+    <!-- <div class="containerFilter">
+      <select
+        class="form-select w-auto currencySelector ms-4"
+        name="filerSearch"
+        id="filterOptions"
+        aria-label="filerSearch"
+        [(ngModel)]="selectedCategory"
+        (change)="setSelectedCategory($event)">
+        <option value="All">All</option>
+        <option value="Sports">Sports</option>
+        <option value="EveryDay">EveryDay</option>
+      </select>
+    </div> -->
+
+    <button
+      class="navbar-toggler m-3"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="location px-3" *ngIf="ipInfoService.ipData as ipData">
+        Your location is {{ ipData.city }} | {{ ipData.country }}
+      </div>
+      <ul class="navbar-nav menuBtn flex-row w-100 justify-content-lg-end justify-content-center p-0">
+        <!--  -->
+        <li></li>
+        <li class="nav-item d-flex align-items-center gap-3 controlBtns p-0">
+          <input type="checkbox" id="toggle_checkbox" (change)="toggleDarkMode()" />
+          <label for="toggle_checkbox" class="label">
+            <div id="star"></div>
+            <div id="moon"></div>
+          </label>
+          <button class="logout-button" *ngIf="authService.checkAuthentication()" (click)="authService.logout()">
+            Logout
+          </button>
+          <button
+            class="admin-button"
+            title="Admin page"
+            *ngIf="!authService.checkAuthentication()"
+            (click)="toggleAutoBox()">
+            <svg width="50" height="50">
+              <use xlink:href="./assets/nav/icon/admin.svg#adminSvgImage"></use>
+            </svg>
+          </button>
+          <button
+            class="admin-button"
+            title="Admin page"
+            *ngIf="authService.checkAuthentication()"
+            [routerLink]="'/admin'">
+            <svg width="50" height="50">
+              <use xlink:href="./assets/nav/icon/admin.svg#adminSvgImage"></use>
+            </svg>
+          </button>
+          <div class="overlay" *ngIf="showAutoBox" (click)="hideAutoBox()"></div>
+          <div class="auto-box" [hidden]="!showAutoBox">
+            <h2>Admin</h2>
+            <form #auto="ngForm">
+              <div class="input-box">
+                <input ngModel name="name" placeholder="Name" required autocomplete="off" />
+                <label for="name">Name</label>
+              </div>
+              <div class="input-box">
+                <input ngModel type="password" name="password" placeholder="Password" required autocomplete="off" />
+                <label for="password">Password</label>
+              </div>
+              <p
+                *ngIf="singUpIsInvalid"
+                style="font-size: 20px; color: #ffffff; text-align: center; text-shadow: 0 0 9px red; font-weight: 900">
+                Invalid name or password
+              </p>
+              <!-- <div class="button-box">
+                <button [disabled]="auto.invalid" (click)="submit(auto)">Enter</button>
+              </div> -->
+              <button class="buttonEnter" (click)="submit(auto)">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <p class="EnterBtnText">Enter</p>
+              </button>
+            </form>
+          </div>
+          <!--  -->
+          <a routerLink="/cart" class="cartBtn" title="Shopping cart">
+            <img src="./assets/nav/icon/cart.svg" alt="Cart" width="50" height="50" />
+            <span
+              class="badge rounded-pill badge-notification bg-danger"
+              *ngIf="amountProductsInCart | async as cartItems">
+              {{ cartItems }}
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

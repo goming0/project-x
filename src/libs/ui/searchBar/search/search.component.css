@@ -1,0 +1,15 @@
+@import '../../../../styles.css';
+
+:host {
+  width: 100%;
+}
+
+.form-control {
+  background-color: var(--review-bgc);
+  border-color: var(--currency-border);
+  color: var(--font-color);
+}
+
+.form-control::placeholder {
+  color: var(--placeholder-color);
+}

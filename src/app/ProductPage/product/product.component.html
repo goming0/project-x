@@ -1,0 +1,52 @@
+<div class="notificationMsg" *ngIf="showNotification">Item Added</div>
+<button class="backBtn themed" [routerLink]="''">
+  <svg width="10px" height="10px" class="arrowSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.75 5.09">
+    <title>Caret</title>
+    <polygon points="3.88 0 7.75 4.43 7 5.09 3.88 1.52 .75 5.09 0 4.43 3.88 0"></polygon>
+  </svg>
+  BACK TO SHOES
+</button>
+<section class="productPage themed" *ngIf="prod; else loading">
+  <div class="conatiner">
+    <div class="product">
+      <div class="get"><img class="prodImg" [src]="prod!.imagesUrls[0]" alt="" /><img /></div>
+    </div>
+    <div class="info">
+      <div class="prodName">{{ prod!.title }}</div>
+      <star-rating
+        class="rating"
+        [showHalfStars]="true"
+        [starType]="'svg'"
+        [rating]="prod!.rating"
+        [readOnly]="true"></star-rating
+      ><br />
+      <div class="price themed">{{ prod.price | currencyRlt : (currentCurrency | async) }}</div>
+      <div class="sizeContainer">
+        <div class="size" (click)="selectSize($event.target)">US 8</div>
+        <div class="size" (click)="selectSize($event.target)">US 9</div>
+        <div class="size" (click)="selectSize($event.target)">US 10</div>
+        <div class="size" (click)="selectSize($event.target)">US 11</div>
+        <div class="size" (click)="selectSize($event.target)">US 12</div>
+        <div class="size" (click)="selectSize($event.target)">US 13</div>
+        <div class="size" (click)="selectSize($event.target)">US 14</div>
+      </div>
+      <div class="notification">Free shipping on orders over {{ 200 | currencyRlt : (currentCurrency | async) }}</div>
+      <div class="description">{{ prod!.description }}</div>
+      <button class="addToCart button" (click)="addToCart()" (click)="showNotificationFunc()">{{ buttonMsg }}</button
+      ><button class="CHECKOUT button" (click)="goToCheckout()">CHECKOUT</button>
+    </div>
+  </div>
+  <app-review [reviewData]="prod!.reviews" (reviewChange)="refreshReviews($event)"></app-review>
+</section>
+<ng-template #productIsNull>
+  <div class="productIsNotFound">
+    <h1>Sorry we don`t have this product.</h1>
+    <p>Please back to <a [routerLink]="''">main page</a></p>
+  </div>
+</ng-template>
+
+<ng-template #loading>
+  <div class="loadingPage" *ngIf="IsNull(prod); else productIsNull">
+    <app-loading></app-loading>
+  </div>
+</ng-template>
