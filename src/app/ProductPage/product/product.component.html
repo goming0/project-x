@@ -22,13 +22,13 @@
       ><br />
       <div class="price themed">{{ prod.price | currencyRlt : (currentCurrency | async) }}</div>
       <div class="sizeContainer">
-        <div class="size" (click)="selectSize($event.target)">US 8</div>
-        <div class="size" (click)="selectSize($event.target)">US 9</div>
+        <div class="size" (click)="selectSize($event.target)" *ngFor="let size of prod.sizes">US {{ size }}</div>
+        <!-- <div class="size" (click)="selectSize($event.target)">US 9</div>
         <div class="size" (click)="selectSize($event.target)">US 10</div>
         <div class="size" (click)="selectSize($event.target)">US 11</div>
         <div class="size" (click)="selectSize($event.target)">US 12</div>
         <div class="size" (click)="selectSize($event.target)">US 13</div>
-        <div class="size" (click)="selectSize($event.target)">US 14</div>
+        <div class="size" (click)="selectSize($event.target)">US 14</div> -->
       </div>
       <div class="notification">Free shipping on orders over {{ 200 | currencyRlt : (currentCurrency | async) }}</div>
       <div class="description">{{ prod!.description }}</div>
