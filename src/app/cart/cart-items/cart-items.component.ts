@@ -70,6 +70,7 @@ export class CartItemsComponent implements OnInit {
       this.shippingPrice = 0;
     }
     this.totalPrice = this.subtotalPrice + this.shippingPrice;
+    this.products.setTotalPrice(this.totalPrice);
   }
 
   updateShippingPrice() {

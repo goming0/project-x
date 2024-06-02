@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartItemsService } from 'src/app/services/cart-items.service';
+import { StripeCheckOutService } from 'src/app/services/stripe/stripe-check-out.service';
 
 @Component({
   selector: 'app-shipping-address',
@@ -8,7 +9,7 @@ import { CartItemsService } from 'src/app/services/cart-items.service';
   styleUrls: ['./shipping-address.component.css'],
 })
 export class ShippingAddressComponent {
-  constructor(private router: Router, private products: CartItemsService) {}
+  constructor(private router: Router, private products: CartItemsService, private stripe: StripeCheckOutService) {}
 
   showNotification = false;
 
@@ -17,12 +18,7 @@ export class ShippingAddressComponent {
   }
 
   showNotificationFunc() {
-    this.showNotification = true;
+    this.stripe.checkout(this.products.getProducts());
     this.products.clearProducts();
-    setTimeout(() => {
-      this.products.amountProducts$.next(0);
-      this.showNotification = false;
-      this.router.navigate(['']);
-    }, 2000);
   }
 }

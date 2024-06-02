@@ -10,10 +10,23 @@ export class CartItemsService {
 
   private sizes: string[] = [];
 
+  private totalPrice = 0;
+
   public amountProducts$ = new BehaviorSubject<number>(0);
 
   getProducts() {
+    if (this.products.length <= 0) {
+      this.products = JSON.parse(localStorage.getItem('cartItems') ?? '[]');
+    }
     return this.products;
+  }
+
+  getPrice() {
+    return this.totalPrice;
+  }
+
+  setTotalPrice(price: number) {
+    this.totalPrice = price;
   }
 
   setProducts(data: object) {
