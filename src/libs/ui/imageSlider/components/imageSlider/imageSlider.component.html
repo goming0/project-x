@@ -1,4 +1,4 @@
-<div class="slider" appSwipe (next)="goToNext()" (previous)="goToPrevious()">
+<div class="slidderWrapper">
   <div class="sliderControles" *ngIf="slides.length > 1">
     <div (click)="goToNext()" class="icon right" [ngClass]="{ mobile_icon_right: !isNotMobileDevice }">
       <div class="arrow">
@@ -11,7 +11,22 @@
       </div>
     </div>
   </div>
-  <div class="slide" (click)="onClickToImage()" #lazyLoadTag></div>
+  <div
+    class="slider"
+    [attr.data-cur-index]="currentIndex"
+    appSwipe
+    (next)="goToNext()"
+    (previous)="goToPrevious()"
+    #sliderEl>
+    <img
+      class="slide"
+      decoding="async"
+      loading="lazy"
+      (click)="onClickToImage()"
+      [src]="img"
+      *ngFor="let img of slides; let i = index"
+      #lazyLoadTag />
+  </div>
   <div class="dotsContainer" *ngIf="showDots()">
     <div
       *ngFor="let slide of slides; let slideIndex = index"

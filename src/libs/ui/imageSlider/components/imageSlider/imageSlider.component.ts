@@ -18,7 +18,9 @@ import { IntersectionService } from '../../service/intersection.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImageSliderComponent implements AfterViewInit {
-  @ViewChild('lazyLoadTag') private lazyLoadTag?: ElementRef<HTMLDivElement>;
+  @ViewChild('lazyLoadTag') private lazyLoadTag?: ElementRef<HTMLImageElement>;
+
+  @ViewChild('sliderEl') private sliderEl?: ElementRef<HTMLDivElement>;
 
   @Input() slides: string[] = [];
 
@@ -30,7 +32,7 @@ export class ImageSliderComponent implements AfterViewInit {
 
   private imagesIsLoaded: number[] = [0];
 
-  currentIndex = 0;
+  public currentIndex = 0;
 
   constructor(
     @Inject('IsNotMobileDeviceService') public isNotMobileDevice: boolean,
@@ -38,8 +40,6 @@ export class ImageSliderComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.lazyLoadTag!.nativeElement.setAttribute('data-src', `url('${this.slides[this.currentIndex]}')`);
-    this.lazyLoadTag!.nativeElement.setAttribute('data-src-preload', `${this.slides[(this.currentIndex += 1)]}`);
     this.imageLoaderService.imageObserver.observe(this.lazyLoadTag?.nativeElement as unknown as Element);
   }
 
@@ -56,16 +56,17 @@ export class ImageSliderComponent implements AfterViewInit {
 
   goToPrevious(): void {
     if (this.currentIndex !== 0) {
+      const img = this.sliderEl!.nativeElement.getElementsByTagName('img')[0];
       this.currentIndex -= 1;
-      this.lazyLoadTag!.nativeElement.style.backgroundImage = `url('${this.slides[this.currentIndex]}')`;
+      this.sliderEl!.nativeElement.style.transform = `translate(-${img.width * this.currentIndex}px, 0px)`;
     }
   }
 
   goToNext(): void {
     if (this.currentIndex < this.slides.length - 1) {
-      this.lazyLoadTag!.nativeElement.style.backgroundImage = `url('${this.slides[this.currentIndex]}')`;
+      const img = this.sliderEl!.nativeElement.getElementsByTagName('img')[0];
       this.currentIndex += 1;
-      this.preloadImages(this.currentIndex + 1);
+      this.sliderEl!.nativeElement.style.transform = `translate(-${img.width * this.currentIndex}px, 0px)`;
     }
   }
 
