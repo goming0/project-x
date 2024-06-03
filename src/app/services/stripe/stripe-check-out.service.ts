@@ -38,7 +38,7 @@ export class StripeCheckOutService {
   }
 
   async checkout(data: any) {
-    const host = 'http://localhost:3000';
+    const host = 'https://stripe-server-jet.vercel.app';
     const prod = data as Product[];
     const checkout: Subscription = this.http
       .post(

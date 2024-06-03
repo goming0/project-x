@@ -1,0 +1,27 @@
+.cancel-page {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.cancel-page h1 {
+  color: red;
+  font-size: 2.5em;
+}
+
+.cancel-page p {
+  font-size: 1.2em;
+  margin: 20px 0;
+}
+
+.cancel-page button {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-page button:hover {
+  background-color: darkred;
+}

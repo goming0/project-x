@@ -14,9 +14,18 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FooterComponent } from './footer/footer.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { HttpClientModule } from '@angular/common/http';
+import { SuccessPageComponent } from './stripe-answer/success-page/success-page.component';
+import { CancelPageComponent } from './stripe-answer/cancel-page/cancel-page.component';
 
 @NgModule({
-  declarations: [AppComponent, NavigationComponent, PageNotFoundComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    NavigationComponent,
+    PageNotFoundComponent,
+    FooterComponent,
+    SuccessPageComponent,
+    CancelPageComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
