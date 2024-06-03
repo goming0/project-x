@@ -18,7 +18,9 @@ export class ShippingAddressComponent {
   }
 
   showNotificationFunc() {
-    this.stripe.checkout(this.products.getProducts());
+    const shippingCost = this.products.getPrice() >= 200 ? 0 : 10;
+
+    this.stripe.checkout(this.products.getProducts(), shippingCost);
     this.products.clearProducts();
   }
 }

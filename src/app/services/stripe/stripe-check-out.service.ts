@@ -37,14 +37,26 @@ export class StripeCheckOutService {
     this.subscriptions.unsubscribe();
   }
 
-  async checkout(data: any) {
+  async checkout(data: any, shippingCost: number) {
     const host = 'https://stripe-server-jet.vercel.app';
     const prod = data as Product[];
     const checkout: Subscription = this.http
       .post(
         host + '/create-checkout-session',
         {
-          data: this.formateProduct(prod),
+          line_items: this.formateProduct(prod),
+          shipping_options: [
+            {
+              shipping_rate_data: {
+                display_name: 'Total',
+                type: 'fixed_amount',
+                fixed_amount: {
+                  amount: shippingCost * 100,
+                  currency: 'usd',
+                },
+              },
+            },
+          ],
         },
         { observe: 'response' },
       )
@@ -64,8 +76,6 @@ export class StripeCheckOutService {
   }
 
   formateProduct(data: Product[]) {
-    console.log(data);
-
     const subCurrency = this.currency.selectedCurrency$.subscribe((code) => (this.currentCurrency = code));
     const res: Record<string, unknown>[] = [];
     data.forEach((el) => {
