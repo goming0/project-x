@@ -12,19 +12,19 @@
       <button class="amtBtn">{{ prod.amount }}</button>
       <button (click)="increaseAmount(prod)" class="amtBtn">+</button>
     </div>
-    <span class="deleteProd" (click)="deleteProduct(i, prod)">Remove</span>
+    <span class="deleteProd" (click)="deleteProduct(i, prod)">ВИДАЛИТИ</span>
   </div>
   <div class="prices">
     <div class="subtotal">
-      <span class="senc">SUBTOTAL</span>
+      <span class="senc">ТОВАР</span>
       <span class="subtotalSpan">{{ subtotalPrice | currencyRlt : (currentCurrency | async) }}</span>
     </div>
     <div class="shipping">
-      <span class="senc">SHIPPING</span>
+      <span class="senc">ДОСТАВКА</span>
       <span class="subtotalSpan">{{ shippingPrice | currencyRlt : (currentCurrency | async) }}</span>
     </div>
     <div class="total">
-      <span class="senc">TOTAL</span>
+      <span class="senc">ВСЬОГО</span>
       <span class="subtotalSpan">{{ totalPrice | currencyRlt : (currentCurrency | async) }}</span>
     </div>
   </div>

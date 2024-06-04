@@ -1,47 +1,47 @@
-<div class="notificationMsg themed" *ngIf="showNotification">Thanks for you'r order! :)</div>
+<div class="notificationMsg themed" *ngIf="showNotification">Дякуємо за замовлення! :)</div>
 <span class="address d-inline-block"
-  ><b class="contact d-block themed">CONTACT INFORMATION</b>
+  ><b class="contact d-block themed">КОНТАКТНА ІНФОРМАЦІЯ</b>
   <br />
   <input type="text" placeholder="EMAIL" class="email" />
   <br />
   <label class="checkbox-container">
     <input type="checkbox" class="checkbox-input" />
     <span class="checkbox-custom"></span>
-    <span class="emailNotif">EMAIL ME WITH NEWS AND OFFERS</span>
+    <span class="emailNotif">ВІДПРАВЛЯТИ ЛИСТИ МЕНІ НА ПОШТУ</span>
   </label>
   <br />
-  <b class="ship d-block">SHIPPING ADDRESS</b>
+  <b class="ship d-block">АДРЕСА ДОСТАВКИ</b>
   <br />
   <select name="user_profile_color_1" class="country">
-    <option value="Ukraine">Ukraine</option>
-    <option value="USA">USA</option>
-    <option value="Germany">Germany</option>
-    <option value="Spain">Spain</option>
-    <option value="Italy">Italy</option>
-    <option value="Poland">Poland</option>
+    <option value="Ukraine">Україна</option>
+    <option value="USA">США</option>
+    <option value="Germany">Німеччина</option>
+    <option value="Spain">Іспанія</option>
+    <option value="Italy">Італія</option>
+    <option value="Poland">Польща</option>
   </select>
   <br />
-  <input type="text" placeholder="FIRST NAME" class="input" />
+  <input type="text" placeholder="ІМ'Я" class="input" />
   <br />
-  <input type="text" placeholder="LAST NAME" class="input" />
+  <input type="text" placeholder="ПРІЗВИЩЕ" class="input" />
   <br />
-  <input type="text" placeholder="STREET AND HOUSE NUMBER" class="input" />
+  <input type="text" placeholder="ВУЛИЦЯ І НОМЕР ДОМА" class="input" />
   <br />
-  <input type="text" placeholder="ADDITIONAL ADDRESS (OPTIONAL)" class="input" />
+  <input type="text" placeholder="ДОДАТКОВА АДРЕСА (НЕОБОВ'ЯЗКОВО)" class="input" />
   <br />
-  <input type="text" placeholder="POSTAL CODE" class="input" />
+  <input type="text" placeholder="ПОШТОВИЙ ІНДЕКС" class="input" />
   <br />
-  <input type="text" placeholder="CITY" class="input" />
+  <input type="text" placeholder="МІСТО" class="input" />
   <br />
-  <input type="text" placeholder="PHONE" class="input" />
+  <input type="text" placeholder="ТЕЛЕФОН" class="input" />
   <br />
   <label class="checkbox-container">
     <input type="checkbox" class="checkbox-input" />
     <span class="checkbox-custom"></span>
-    <span class="emailNotif"> SAVE THIS INFORMATION FOR THE NEXT TIME</span>
+    <span class="emailNotif"> ЗБЕРІГТИ ІНФОРМАЦІЮ НА НАСТУПНИЙ РАЗ</span>
   </label>
   <br />
-  <button (click)="showNotificationFunc()" class="continue text-center">BUY</button>
+  <button (click)="showNotificationFunc()" class="continue text-center">КУПИТИ</button>
   <br />
-  <button class="back text-center" (click)="goToCheckout()">RETURN TO MAIN PAGE</button>
+  <button class="back text-center" (click)="goToCheckout()">ПОВЕРНУТИСЬ ДО ГОЛОВНОЇ</button>
 </span>

@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
   sizeSelected?: boolean = false;
 
-  buttonMsg = 'ADD TO BAG';
+  buttonMsg = 'ДОДАТИ В КОШИК';
 
   showNotification = false;
 
@@ -118,7 +118,7 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.products.amountProducts$.next(count + 1);
       }
     } else if (this.sizeSelected === false) {
-      this.buttonMsg = 'SELECT A SIZE';
+      this.buttonMsg = 'ОБЕРІТЬ РОЗМІР';
     }
   }
 
@@ -144,18 +144,18 @@ export class ProductComponent implements OnInit, OnDestroy {
     const element = e as HTMLElement;
     if (element instanceof HTMLElement) {
       if (this.selectedSize) {
-        this.selectedSize.classList.remove('selected');
+        this.selectedSize.classList.remove('обрано');
         this.selectedSize = null;
         this.selectedSize = element;
-        this.selectedSize.classList.add('selected');
+        this.selectedSize.classList.add('обрано');
         this.sizeSelected = true;
         this.size = element.textContent as unknown as string;
-        this.buttonMsg = 'ADD TO BAG';
+        this.buttonMsg = 'ДОДАТИ В КОШИК';
       } else {
         this.selectedSize = element;
-        this.selectedSize.classList.add('selected');
+        this.selectedSize.classList.add('обрано');
         this.sizeSelected = true;
-        this.buttonMsg = 'ADD TO BAG';
+        this.buttonMsg = 'ДОДАТИ В КОШИК';
         this.size = element.textContent as unknown as string;
       }
     }
