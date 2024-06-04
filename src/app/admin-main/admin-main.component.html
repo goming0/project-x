@@ -1,8 +1,8 @@
 <div class="admin-container h-100">
   <div class="admin-sidebar h-100">
-    <button class="buttonsAdmin" (click)="setActiveBlock('add')" [class.active]="activeBlock === 'add'">Add</button>
+    <button class="buttonsAdmin" (click)="setActiveBlock('add')" [class.active]="activeBlock === 'add'">Додати</button>
     <button class="buttonsAdmin" (click)="setActiveBlock('delete')" [class.active]="activeBlock === 'delete'">
-      Delete
+      Видалити
     </button>
     <!-- <button class="buttonsAdmin">Add</button>
     <button class="buttonsAdmin">Delete</button> -->
@@ -15,7 +15,7 @@
       *ngIf="showForm && activeBlock === 'add'">
       <div class="p-4">
         <div class="mb-3 d-flex align-items-center">
-          <label for="categoryAdmForm">Category:</label>
+          <label for="categoryAdmForm">Категорія:</label>
           <input
             #category="ngModel"
             [(ngModel)]="formData.category"
@@ -28,10 +28,10 @@
             required />
         </div>
         <div style="color: #dc3545" *ngIf="category.invalid && (category.dirty || formAdd.dirty)">
-          Please enter category.
+          Будь ласка, введіть категорію.
         </div>
         <div class="mb-3 d-flex align-items-center">
-          <label for="titleAdmForm">Product name:</label>
+          <label for="titleAdmForm">Найменування продукта:</label>
           <input
             [(ngModel)]="formData.title"
             type="text"
@@ -45,24 +45,24 @@
             required />
         </div>
         <div style="color: #dc3545" *ngIf="title.invalid && (title.dirty || formAdd.dirty)">
-          Please enter name of product.
+          Будь ласка, введіть найменування продукта.
         </div>
         <div class="mb-3 d-flex align-items-center">
-          <label for="descriptionAdmForm">Description:</label>
+          <label for="descriptionAdmForm">Опис:</label>
           <input
             [(ngModel)]="formData.description"
             #description="ngModel"
             type="text"
-            placeholder="The Air Jordan 1 Mid brings full-court style...*"
+            placeholder="Неймовірні кросівки Nike мають...*"
             class="form-control ms-2"
-            name="description"
+            name="Назва"
             id="descriptionAdmForm"
             minlength="2"
             (keydown)="validateLettersSpacesAndNumbers($event)"
             required />
         </div>
         <div style="color: #dc3545" *ngIf="description.invalid && (description.dirty || formAdd.dirty)">
-          Please enter description.
+          Будь ласка, введіть опис продукта.
         </div>
         <div class="priceSitting">
           <div class="mb-3 d-flex align-items-center">
@@ -94,7 +94,7 @@
         </div>
         <div class="colorSetting">
           <div class="mb-3 d-flex align-items-center">
-            <label for="colorNameAdmForm">Name Color:</label>
+            <label for="colorNameAdmForm">Назва коліра:</label>
             <input
               [(ngModel)]="formData.color.name"
               #colorName="ngModel"
@@ -107,10 +107,10 @@
               required />
           </div>
           <div style="color: #dc3545" *ngIf="colorName.invalid && (colorName.dirty || formAdd.dirty)">
-            Please enter color name.
+            Будь ласка, введіть назву коліра.
           </div>
           <div class="mb-3 d-flex align-items-center">
-            <label for="hexNameAdmForm">HEX:</label>
+            <label for="hexNameAdmForm">Код коліра:</label>
             <input
               [(ngModel)]="formData.color.hex"
               #colorHex="ngModel"
@@ -123,11 +123,11 @@
               required />
           </div>
           <div style="color: #dc3545" *ngIf="colorHex.invalid && (colorHex.dirty || formAdd.dirty)">
-            Please enter valid hex (example #ffffff).
+            Будь ласка, введіть код коліра (наприклад #ffffff).
           </div>
         </div>
         <div class="mb-3 sizeBox">
-          <h5 class="mb-0">Sizes:</h5>
+          <h5 class="mb-0">Розміри:</h5>
           <div class="form-check">
             <input
               [(ngModel)]="size8"
@@ -215,15 +215,15 @@
             sizeIsUntouched([sizeRef8, sizeRef9, sizeRef10, sizeRef11, sizeRef12, sizeRef13, sizeRef14, sizeRef15]) &&
             formAdd.dirty
           ">
-          Shoes must be at least one size.
+          Взуття має мати бути хоча б одного розміру.
         </div>
 
         <div class="ImgAndType__box mb-4 d-flex justify-content-between">
           <!-- Левая колонка - выбор картинок -->
           <div class="imgNewBox d-flex align-items-center">
-            <p class="mb-0 me-3">Add pictures:</p>
+            <p class="mb-0 me-3">Додати зображення:</p>
             <div class="">
-              <label for="fileInput" class="btn-input">Select files</label>
+              <label for="fileInput" class="btn-input">Обрати зображення</label>
               <input
                 class="file-input"
                 id="fileInput"
@@ -232,30 +232,30 @@
                 multiple
                 (change)="onFileInputChange($event)"
                 required />
-              <span class="ms-3" *ngIf="selectedFiles.length > 0">{{ selectedFiles.length }} file(s) selected</span>
+              <span class="ms-3" *ngIf="selectedFiles.length > 0">{{ selectedFiles.length }} Файл(и) обрані</span>
             </div>
             <div style="color: #dc3545" *ngIf="selectedFiles.length === 0 && formAdd.dirty">
-              Must be at least one image.
+              Повинно бути хоча б одне зображення.
             </div>
           </div>
 
           <!-- Правая колонка - выбор модели -->
           <div class="typeModel d-flex align-items-center">
-            <label for="typeModeleAdmForm">Model:</label>
+            <label for="typeModeleAdmForm">Модель:</label>
             <select
               [(ngModel)]="formData.typeModel"
               id="typeModeleAdmForm"
               class="form-control ms-3"
               name="typeModel"
               required>
-              <option value="Sports" selected>Sports</option>
-              <option value="EveryDay">EveryDay</option>
+              <option value="Sports" selected>Спорт</option>
+              <option value="EveryDay">Щоденна</option>
             </select>
           </div>
         </div>
 
         <p class="text-danger" *ngIf="showErrorMessage">
-          You did not fill in all the fields, or did not select sizes, or did not upload a picture
+          Ви не заповнили всі поля, або не обрали розмір, або не загрузили зображення
         </p>
       </div>
 
@@ -264,7 +264,7 @@
           type="submit"
           class="btn btn-primary btnAdd"
           [disabled]="!formAdd.valid || !isAnySizeSelected() || !isFilesSelected()">
-          Add
+          Додати
         </button>
       </div>
     </form>
@@ -272,13 +272,13 @@
     <section class="d-flex w-100 deleteMainBox p-3 flex-column" *ngIf="!showForm && activeBlock === 'delete'">
       <!-- <section class="d-flex w-100 deleteMainBox p-3 flex-column"> -->
       <div class="searcBox w-100 d-flex flex-column align-items-center text-center">
-        <h5 class="mb-4">What product do you want to delete?</h5>
+        <h5 class="mb-4">Який продукт ви хочете видалити?</h5>
         <app-search class="seaerchProd w-100 mb-4" (searchChange)="submitSearch($event)"></app-search>
 
         <div class="categoryFilter mb-4">
-          <button class="button__category" (click)="setSelectedCategory('All')">All</button>
-          <button class="button__category" (click)="setSelectedCategory('Sports')">Sports</button>
-          <button class="button__category" (click)="setSelectedCategory('EveryDay')">EveryDay</button>
+          <button class="button__category" (click)="setSelectedCategory('All')">Всі</button>
+          <button class="button__category" (click)="setSelectedCategory('Sports')">Спорт</button>
+          <button class="button__category" (click)="setSelectedCategory('EveryDay')">Щоденна</button>
         </div>
       </div>
       <div class="boxProduct d-flex flex-wrap w-100">
@@ -288,8 +288,8 @@
               <div class="productItem ms-3 mb-4 p-1">
                 <img class="mb-3" width="200" [src]="productRef.imagesUrls[0]" alt="img" />
                 <h4 class="">{{ productRef.title }}</h4>
-                <p class="mb-3"><b>Description:</b> {{ productRef.description | ellipse : 80 }}</p>
-                <button class="btn btn-primary" (click)="deleteProduct(productRef)">Удалить</button>
+                <p class="mb-3"><b>Опис:</b> {{ productRef.description | ellipse : 80 }}</p>
+                <button class="btn btn-primary" (click)="deleteProduct(productRef)">Видалити</button>
               </div>
             </div>
           </ng-container>
