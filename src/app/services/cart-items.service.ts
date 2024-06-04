@@ -65,11 +65,8 @@ export class CartItemsService {
 
   clearProducts() {
     this.products = [];
-    localStorage.setItem('cartItems', JSON.stringify(this.products));
-    const len = this.products.length;
-    if (len > 0) {
-      this.amountProducts$ = 0 as unknown as BehaviorSubject<number>;
-    }
+    localStorage.setItem('cartItems', JSON.stringify('[]'));
+    this.amountProducts$.next(0);
   }
 
   clearSizes() {
