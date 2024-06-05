@@ -62,11 +62,11 @@
             <div id="moon"></div>
           </label>
           <button class="logout-button" *ngIf="authService.checkAuthentication()" (click)="authService.logout()">
-            Logout
+            Вихід
           </button>
           <button
             class="admin-button"
-            title="Admin page"
+            title="Адмінпанель"
             *ngIf="!authService.checkAuthentication()"
             (click)="toggleAutoBox()">
             <svg width="50" height="50">
@@ -75,7 +75,7 @@
           </button>
           <button
             class="admin-button"
-            title="Admin page"
+            title="Адмінпанель"
             *ngIf="authService.checkAuthentication()"
             [routerLink]="'/admin'">
             <svg width="50" height="50">
@@ -84,20 +84,20 @@
           </button>
           <div class="overlay" *ngIf="showAutoBox" (click)="hideAutoBox()"></div>
           <div class="auto-box" [hidden]="!showAutoBox">
-            <h2>Admin</h2>
+            <h2>Адмінпанель</h2>
             <form #auto="ngForm">
               <div class="input-box">
                 <input ngModel name="name" placeholder="Name" required autocomplete="off" />
-                <label for="name">Name</label>
+                <label for="name">Логін</label>
               </div>
               <div class="input-box">
                 <input ngModel type="password" name="password" placeholder="Password" required autocomplete="off" />
-                <label for="password">Password</label>
+                <label for="password">Пароль</label>
               </div>
               <p
                 *ngIf="singUpIsInvalid"
                 style="font-size: 20px; color: #ffffff; text-align: center; text-shadow: 0 0 9px red; font-weight: 900">
-                Invalid name or password
+                Неправильний логін або пароль
               </p>
               <!-- <div class="button-box">
                 <button [disabled]="auto.invalid" (click)="submit(auto)">Enter</button>
@@ -107,12 +107,12 @@
                 <span></span>
                 <span></span>
                 <span></span>
-                <p class="EnterBtnText">Enter</p>
+                <p class="EnterBtnText">УВІЙТИ</p>
               </button>
             </form>
           </div>
           <!--  -->
-          <a routerLink="/cart" class="cartBtn" title="Shopping cart">
+          <a routerLink="/cart" class="cartBtn" title="Кошик">
             <img src="./assets/nav/icon/cart.svg" alt="Cart" width="50" height="50" />
             <span
               class="badge rounded-pill badge-notification bg-danger"
